@@ -1,12 +1,12 @@
 return {
-  {
-    "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
+  -- {
+  --   "stevearc/conform.nvim",
+  --   -- event = 'BufWritePre', -- uncomment for format on save
+  --   config = function()
+  --     require "configs.conform"
+  --   end,
+  -- },
+  --
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
@@ -67,5 +67,18 @@ return {
   {
     "github/copilot.vim",
     lazy = false,
+  },
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+
+      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
+      vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
+    end,
   },
 }
